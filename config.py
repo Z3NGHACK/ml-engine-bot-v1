@@ -10,7 +10,6 @@ load_dotenv()
 MONGODB_URI = os.getenv('MONGODB_URI')
 DATABASE_NAME = 'test'  # ✅ Your database name
 COLLECTION_NAME = 'marketdatas'
-
 # Model Configuration
 MODEL_TYPE = os.getenv('MODEL_TYPE', 'ensemble')
 PREDICTION_HORIZON = int(os.getenv('PREDICTION_HORIZON', 5))
