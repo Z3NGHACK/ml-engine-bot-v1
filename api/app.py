@@ -4,6 +4,12 @@ from pydantic import BaseModel
 from typing import Optional
 import uvicorn
 
+import sys
+import os
+
+# Add parent directory to path
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from utils.data_loader import DataLoader
 from analysis.technical import TechnicalAnalyzer
 from analysis.pattern_detection import PatternDetector
