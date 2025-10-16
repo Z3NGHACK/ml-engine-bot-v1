@@ -6,6 +6,7 @@ import uvicorn
 
 import sys
 import os
+from models.ensemble import EnsembleModel  # If needed, but since in technical, it's covered
 
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -15,6 +16,10 @@ from analysis.technical import TechnicalAnalyzer
 from analysis.pattern_detection import PatternDetector
 import config
 
+def __init__(self):
+    self.ensemble = EnsembleModel()
+    print("✅ TechnicalAnalyzer initialized")
+    
 app = FastAPI(title="Crypto ML Engine API", version="1.0.0")
 
 app.add_middleware(

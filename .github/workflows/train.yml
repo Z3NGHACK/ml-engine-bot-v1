@@ -1,0 +1,16 @@
+name: Train Models
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with: { python-version: '3.12' }
+    - run: pip install -r requirements.txt
+    - run: python training/train_model.py
+    - run: git config --global user.name "Bot" && git config --global user.email "bot@example.com"
+    - run: git add models/*.pkl models/*.h5 && git commit -m "Update trained models" || echo "No changes"
+    - run: git push

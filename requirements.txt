@@ -20,4 +20,6 @@ scikit-learn==1.5.2
 python-dateutil==2.9.0
 pytz==2025.2
 
-# Remove: pydantic, motor, joblib (not needed for basic ML engine)
+# Remove: pydantic, motor, joblib (not needed for basic ML engine)# Add these
+tensorflow==2.17.0  # For LSTM (Keras)
+joblib==1.4.2  # For saving RF models

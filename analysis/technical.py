@@ -4,9 +4,11 @@
 import pandas as pd
 import numpy as np
 import config
+from models.ensemble import EnsembleModel
 
 class TechnicalAnalyzer:
     def __init__(self):
+        self.ensemble = EnsembleModel()
         print("✅ TechnicalAnalyzer initialized")
     
     def calculate_rsi(self, df, period=14):
@@ -187,7 +189,16 @@ class TechnicalAnalyzer:
                 confidence = (short_signals / max_signals) * 100
             else:
                 signal_type = 'NEUTRAL'
+                recommendation = "Low confidence - hold position."
                 confidence = 50
+                
+            # ML boost
+            ml_signal = self.ensemble.predict(df[['close']], df)  # Pass raw df and indicators df
+            if ml_signal == 'LONG':
+                long_signals += 2  # Extra weight for ML
+            elif ml_signal == 'SHORT':
+                short_signals += 2
+            max_signals += 2  # Adjust max
             
             # Generate recommendation
             if confidence >= 70:
