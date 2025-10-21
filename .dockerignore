@@ -1,0 +1,17 @@
+# ============================================
+# FILE: ml-engine/.dockerignore
+# ============================================
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+.env
+.venv
+*.log
+.git
+.gitignore
+README.md
+.DS_Store
